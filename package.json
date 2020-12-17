@@ -4,7 +4,8 @@
   "description": "Retrieve leveraged token price ",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "sass --watch public/sass:public/css"
   },
   "author": "LidoKing",
   "license": "ISC"
