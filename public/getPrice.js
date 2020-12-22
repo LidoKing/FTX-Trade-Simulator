@@ -25,7 +25,9 @@ async function getPrice() {
 async function update() {
   let response = await getPrice();
 
-  price.innerHTML = response.result.pricePerShare;
+  let num = response.result.pricePerShare
+
+  price.innerHTML = num.toFixed(2);
 }
 
 window.onload = () => {
