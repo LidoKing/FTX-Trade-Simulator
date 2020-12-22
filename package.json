@@ -8,5 +8,8 @@
     "watch": "sass --watch public/sass:public/css"
   },
   "author": "LidoKing",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
