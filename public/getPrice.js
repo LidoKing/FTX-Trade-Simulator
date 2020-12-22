@@ -25,10 +25,13 @@ async function getPrice() {
 async function update() {
   let response = await getPrice();
 
-  console.log(response.result.pricePerShare);
+  price.innerHTML = response.result.pricePerShare;
 }
 
-setInterval(update(), 1000);
+window.onload = () => {
+  update();
+  setInterval(update, 2000);
+}
 
 /*
 fetch(endpoint)
