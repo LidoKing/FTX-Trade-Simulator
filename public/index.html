@@ -4,11 +4,29 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <div id="price"></div>
+    <section id="section1">
+      <div id="balance">USD: <span id="usd"></span>, LINKBULL: <span id="linkbull"></span> (<span id="equivalent"></span> USD)</div>
+      <div id="priceBox">~ <div id="price"></div> ~</div>
+      <!--div id=target></div-->
+      <div id="actions">
+        <input type="number" id="enter" value="">
+        <button class="buttons" type="button" onClick="buy()" id="buy">BUY</button>
+        <input type="number" id="exit" value="">
+        <button class="buttons" type="button" onClick="sell()" id="sell">SELL</button>
+        <button class="buttons" type="button" onClick="reset()">RESET</button>
+        <!--button class="buttons" type="button" onClick="getTarget()">TARGET</button-->
+      </div>
+      <span id="redirect">Chart at: <a href="https://ftx.com/trade/LINKBULL/USD" target="_blank">https://ftx.com/trade/LINKBULL/USD</a></span>
+    </section>
+
+    <section id="section2">
+      <div id="historyBox"><div id="tradeHistory"></div></div>
+    </section>
   </body>
 
-  <script src="getPrice.js"></script>
+  <script src="trading.js"></script>
 </html>
