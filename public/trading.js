@@ -6,8 +6,7 @@ const linkbull = document.getElementById('linkbull');
 const target = document.getElementById('target');
 const equivalent = document.getElementById('equivalent');
 const tradeHistory = document.getElementById('tradeHistory');
-const enter = document.getElementById('enter');
-const exit = document.getElementById('exit');
+
 
 
 //USING CORS IN LOCALHOST IS A PAIN IN THE ASS
@@ -142,11 +141,6 @@ function reset() {
   updateHTML();
 }
 
-function enter(price) {
-    if(num <= price) {
-
-    }
-}
 
 /*
 // Target calculator
