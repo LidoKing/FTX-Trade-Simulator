@@ -8,7 +8,6 @@ const equivalent = document.getElementById('equivalent');
 const tradeHistory = document.getElementById('tradeHistory');
 
 
-
 //USING CORS IN LOCALHOST IS A PAIN IN THE ASS
 
 // Variables declaration
@@ -67,6 +66,22 @@ function setStorage(name, value) {
   return localStorage.setItem(name, value);
 }
 
+function renderHistory() {
+  let array = JSON.parse(getStorage('TradeHistory'));
+
+  array.forEach(item => {
+    let list = document.createElement("LI");
+    list.innerHTML = item;
+
+    if(item.includes('Bought')) {
+      list.style.color = '#2f8e02';
+    } else if (item.includes('Sold')) {
+      list.style.color = '#df0000';
+    }
+    tradeHistory.appendChild(list);
+  });
+}
+
 function updateHistory(price, action) {
   history = JSON.parse(getStorage('TradeHistory'));
 
@@ -86,19 +101,7 @@ function updateHistory(price, action) {
   // Clear content before update to prevent accumulation
   tradeHistory.innerHTML = "";
 
-  let array = JSON.parse(getStorage('TradeHistory'));
-
-  array.forEach(item => {
-    let list = document.createElement("LI");
-    list.innerHTML = item;
-
-    if(item.includes('Bought')) {
-      list.style.color = '#2f8e02';
-    } else if (item.includes('Sold')) {
-      list.style.color = '#df0000';
-    }
-    tradeHistory.appendChild(list);
-  });
+  renderHistory();
 }
 
 window.onload = () => {
@@ -107,20 +110,16 @@ window.onload = () => {
 
   checkStorage();
 
+  // Check whether TradeHistory exists in local storage, if not, create one
   if(getStorage('TradeHistory') == null) {
     setStorage('TradeHistory', JSON.stringify(history));
   }
 
-  let array = JSON.parse(getStorage('TradeHistory'));
-
-  array.forEach(item => {
-    tradeHistory.innerHTML += item + "<br>";
-  });
+  renderHistory();
 }
 
 
 // Buy & Sell
-
 function buy() {
   if(getStorage('USD') > 0) {
     let amount = getStorage('USD') * (1 / num);
