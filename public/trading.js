@@ -91,6 +91,12 @@ function updateHistory(price, action) {
   array.forEach(item => {
     let list = document.createElement("LI");
     list.innerHTML = item;
+
+    if(item.includes('Bought')) {
+      list.style.color = '#2f8e02';
+    } else if (item.includes('Sold')) {
+      list.style.color = '#df0000';
+    }
     tradeHistory.appendChild(list);
   });
 }
