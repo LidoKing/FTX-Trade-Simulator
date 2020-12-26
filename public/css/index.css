@@ -20,6 +20,9 @@ html body #section1 {
   justify-content: space-around;
   align-items: center;
 }
+html ul {
+  list-style: none;
+}
 
 #price {
   display: inline;

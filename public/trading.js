@@ -68,6 +68,8 @@ function setStorage(name, value) {
 }
 
 function updateHistory(price, action) {
+  history = JSON.parse(getStorage('TradeHistory'));
+
   // When array length has reached 5, delete one first
   if(history.length > 4) {
     history.pop();
@@ -87,7 +89,9 @@ function updateHistory(price, action) {
   let array = JSON.parse(getStorage('TradeHistory'));
 
   array.forEach(item => {
-    tradeHistory.innerHTML += item + "<br>";
+    let list = document.createElement("LI");
+    list.innerHTML = item;
+    tradeHistory.appendChild(list);
   });
 }
 
@@ -96,6 +100,10 @@ window.onload = () => {
   setInterval(update, 2000);
 
   checkStorage();
+
+  if(getStorage('TradeHistory') == null) {
+    setStorage('TradeHistory', JSON.stringify(history));
+  }
 
   let array = JSON.parse(getStorage('TradeHistory'));
 
@@ -139,6 +147,7 @@ function reset() {
   setStorage('USD', 40);
   setStorage('LINKBULL', 0);
   updateHTML();
+  localStorage.removeItem('TradeHistory');
 }
 
 
