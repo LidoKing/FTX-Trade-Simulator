@@ -53,11 +53,13 @@ function checkStorage() {
   }
 }
 
+// Update balance in HTML
 function updateHTML() {
   usd.innerHTML = getStorage('USD');
   linkbull.innerHTML = getStorage('LINKBULL');
 }
 
+// Redeclaration of local storage functions for convenience
 function getStorage(name) {
   return localStorage.getItem(name)
 }
@@ -66,6 +68,7 @@ function setStorage(name, value) {
   return localStorage.setItem(name, value);
 }
 
+// Update trade history in HTML
 function renderHistory() {
   let array = JSON.parse(getStorage('TradeHistory'));
 
@@ -82,6 +85,7 @@ function renderHistory() {
   });
 }
 
+// Update trade history in local storage
 function updateHistory(price, action) {
   history = JSON.parse(getStorage('TradeHistory'));
 
